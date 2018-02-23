@@ -51,6 +51,8 @@ exports.register = function(req, res) {
 //helper function to create new users
 function createNewUser(id, userName, password, email, img, actualName) {
   var newUser = {
+    "loginStatus": false,
+    "userRole":null,
     "userIdNumber": id,
     "userName": userName,
     "password": password,
@@ -59,6 +61,7 @@ function createNewUser(id, userName, password, email, img, actualName) {
     "actualName": actualName,
     "currentItemIndex": 0,
     "isScreenShared": false,
+    "isAtChatroom": false,
     "categoryList": [],
     "favoriteList": [{
       "title": "Activities",
@@ -95,6 +98,7 @@ function populateUserData(userIdNumber) {
   userData.categoryList = wholeUserData[userIdNumber].categoryList;
   userData.favoriteList = wholeUserData[userIdNumber].favoriteList;
   userData.profileImgURL = wholeUserData[userIdNumber].profileImgURL;
+  userData.isAtChatroom =  wholeUserData[userIdNumber].isAtChatroom;
   userData.loginStatus = true;
 }
 
